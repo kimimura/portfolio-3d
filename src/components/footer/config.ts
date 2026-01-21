@@ -1,12 +1,5 @@
 const footer: { title: string; href: string }[] = [
-  {
-    title: "Blog",
-    href: "/blogs",
-  },
-  {
-    title: "Newsletter",
-    href: "/news",
-  },
+  // Empty - no footer links needed
 ];
 
 export { footer };

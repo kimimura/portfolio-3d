@@ -8,16 +8,23 @@ import Link from "next/link";
 import { ReactNode } from "react";
 import { RiNextjsFill, RiNodejsFill, RiReactjsFill } from "react-icons/ri";
 import {
+  SiAnthropic,
   SiChakraui,
   SiDocker,
   SiExpress,
+  SiFastapi,
   SiFirebase,
+  SiFlask,
   SiJavascript,
+  SiJupyter,
   SiMongodb,
+  SiOpencv,
   SiPostgresql,
   SiPrisma,
   SiPython,
   SiReactquery,
+  SiRender,
+  SiRoboflow,
   SiSanity,
   SiShadcnui,
   SiSocketdotio,
@@ -222,6 +229,72 @@ const PROJECT_SKILLS = {
     fg: "white",
     icon: <SiSupabase />,
   },
+  fastapi: {
+    title: "FastAPI",
+    bg: "black",
+    fg: "white",
+    icon: <SiFastapi />,
+  },
+  flask: {
+    title: "Flask",
+    bg: "black",
+    fg: "white",
+    icon: <SiFlask />,
+  },
+  anthropic: {
+    title: "Anthropic Claude",
+    bg: "black",
+    fg: "white",
+    icon: <SiAnthropic />,
+  },
+  opencv: {
+    title: "OpenCV",
+    bg: "black",
+    fg: "white",
+    icon: <SiOpencv />,
+  },
+  yolov8: {
+    title: "YOLOv8",
+    bg: "black",
+    fg: "white",
+    icon: <span className="font-bold">YOLO</span>,
+  },
+  roboflow: {
+    title: "Roboflow",
+    bg: "black",
+    fg: "white",
+    icon: <SiRoboflow />,
+  },
+  jupyter: {
+    title: "Jupyter",
+    bg: "black",
+    fg: "white",
+    icon: <SiJupyter />,
+  },
+  llama: {
+    title: "Llama 3.1",
+    bg: "black",
+    fg: "white",
+    icon: <span className="font-bold">🦙</span>,
+  },
+  render: {
+    title: "Render",
+    bg: "black",
+    fg: "white",
+    icon: <SiRender />,
+  },
+  doctr: {
+    title: "docTR",
+    bg: "black",
+    fg: "white",
+    icon: <span className="font-bold text-sm">OCR</span>,
+  },
+  geopy: {
+    title: "Geopy",
+    bg: "black",
+    fg: "white",
+    icon: <span className="font-bold">📍</span>,
+  },
 };
 export type Project = {
   id: string;
@@ -236,463 +309,340 @@ export type Project = {
 };
 const projects: Project[] = [
   {
-    id: "codingducks",
-    category: "Coding platform",
-    title: "Coding Ducks",
-    src: "/assets/projects-screenshots/codingducks/landing.png",
+    id: "quanta8-ats",
+    category: "AI-Powered HR System",
+    title: "Applicant Tracking System (Quanta8)",
+    src: "/assets/projects-screenshots/quanta8-ats/landing.png",
     screenshots: ["landing.png"],
     skills: {
       frontend: [
-        PROJECT_SKILLS.ts,
+        PROJECT_SKILLS.react,
         PROJECT_SKILLS.next,
-        PROJECT_SKILLS.chakra,
-        PROJECT_SKILLS.reactQuery,
-        PROJECT_SKILLS.firebase,
+        PROJECT_SKILLS.tailwind,
       ],
       backend: [
-        PROJECT_SKILLS.node,
-        PROJECT_SKILLS.express,
-        PROJECT_SKILLS.prisma,
+        PROJECT_SKILLS.fastapi,
         PROJECT_SKILLS.python,
         PROJECT_SKILLS.postgres,
-        PROJECT_SKILLS.sockerio,
-      ],
-    },
-    live: "https://www.codingducks.xyz/",
-    github: "https://github.com/Naresh-Khatri/Coding-Ducks",
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono text-2xl text-center">
-            Coding ducks = LeetCode + CodePen + CSS Battles
-          </TypographyP>
-          <TypographyP className="font-mono ">
-            Coding Ducks is your coding dojo — where you level up your skills,
-            battle in real-time code duels, and earn badges like a true code
-            warrior. Track your progress, flex your brain, and climb the
-            leaderboard. Ready to quack the code?
-          </TypographyP>
-          <ProjectsLinks live={this.live} repo={this.github} />
-          <TypographyH3 className="my-4 mt-8">Problems </TypographyH3>
-          <p className="font-mono mb-2">
-            Solve coding problems similar to LeetCode, enhancing your
-            problem-solving skills across various languages.
-          </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/codingducks/problems.png`,
-              `${BASE_PATH}/codingducks/problem.png`,
-            ]}
-          />
-          <TypographyH3 className="my-4 mt-8">Ducklets</TypographyH3>
-          <p className="font-mono mb-2">
-            Collaborate in real-time with others in a multiplayer coding
-            environment, just like CodePen but with a social twist.
-          </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/codingducks/ducklets.png`,
-              `${BASE_PATH}/codingducks/ducklet1.png`,
-              `${BASE_PATH}/codingducks/ducklet2.png`,
-            ]}
-          />
-          <TypographyH3 className="my-4 mt-8">UI Battles </TypographyH3>
-
-          <p className="font-mono mb-2">
-            Challenge yourself to create UI components with HTML/CSS/JS, and get
-            instant feedback with an automated similarity scoring.
-          </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/codingducks/css-battles.png`,
-              `${BASE_PATH}/codingducks/css-battle.png`,
-              `${BASE_PATH}/codingducks/css-battle2.png`,
-            ]}
-          />
-          <TypographyH3 className="my-4 mt-8">Contests </TypographyH3>
-          <p className="font-mono mb-2">
-            Organize or participate in coding competitions. Successfully used to
-            host three contests during college.
-          </p>
-          <SlideShow images={[`${BASE_PATH}/codingducks/contests.png`]} />
-          <TypographyH3 className="my-4 mt-8">Playground </TypographyH3>
-          <p className="font-mono mb-2">
-            Test and execute your code instantly in my versatile online code
-            runner.
-          </p>
-          <SlideShow images={[`${BASE_PATH}/codingducks/playground.png`]} />
-          <TypographyH3 className="my-4 mt-8">Users</TypographyH3>
-
-          <p className="font-mono mb-2">
-            Track your progress, earn badges, and climb the rankings with
-            detailed user profiles and activity tracking.
-          </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/codingducks/users.png`,
-              `${BASE_PATH}/codingducks/user.png`,
-            ]}
-          />
-        </div>
-      );
-    },
-  },
-  {
-    id: "couponluxury",
-    category: "Coupon site",
-    title: "Coupon Luxury",
-    src: "/assets/projects-screenshots/couponluxury/landing.png",
-    screenshots: ["1.png", "2.png", "3.png", "4.png", "5.png"],
-    live: "https://www.couponluxury.com/",
-    skills: {
-      frontend: [
-        PROJECT_SKILLS.js,
-        PROJECT_SKILLS.next,
-        PROJECT_SKILLS.chakra,
-        PROJECT_SKILLS.vue,
-      ],
-      backend: [
-        PROJECT_SKILLS.node,
-        PROJECT_SKILLS.express,
-        PROJECT_SKILLS.prisma,
-        PROJECT_SKILLS.postgres,
+        PROJECT_SKILLS.anthropic,
+        PROJECT_SKILLS.doctr,
+        PROJECT_SKILLS.opencv,
         PROJECT_SKILLS.docker,
       ],
     },
-    get content(): JSX.Element {
-      return (
-        <div>
-          <TypographyP className="font-mono ">
-            CouponLuxury is your go-to destination for snagging the best deals
-            without lifting a finger. Whether you&apos;re hunting for the latest
-            discounts or trying to save a buck at your favorite stores,
-            CouponLuxury&apos;s got you covered.
-          </TypographyP>
-          <ProjectsLinks live={this.live} repo={this.github} />
-          <p className="font-mono mb-2 mt-4">
-            As soon as you land, boom! You&apos;re greeted with the freshest
-            coupons and top-tier deals that&apos;ll make your wallet happy.
-          </p>
-          <SlideShow images={[`${BASE_PATH}/couponluxury/landing.png`]} />
-          <TypographyH3 className="my-4 ">Stores</TypographyH3>
-          <p className="font-mono mb-2">
-            Dive into a comprehensive list of stores, each packed with exclusive
-            deals and discounts. It&apos;s like having a VIP pass to every sale
-            in town.
-          </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/couponluxury/stores.png`,
-              `${BASE_PATH}/couponluxury/store.png`,
-            ]}
-          />
-          <TypographyH3 className="my-4 mt-8">Categories</TypographyH3>
-
-          <p className="font-mono mb-2">
-            Whatever you&apos;re into—fashion, tech, food—you&apos;ll find it
-            neatly organized here. No more endless scrolling; just pick a
-            category and get the best offers instantly.
-          </p>
-          <SlideShow images={[`${BASE_PATH}/couponluxury/categories.png`]} />
-          <TypographyH3 className="my-4 mt-8">Custom CMS </TypographyH3>
-          <p className="font-mono mb-2">
-            Powered by Vue.js, this bad boy allows us to keep the content
-            dynamic and up-to-date. From flash sales to limited-time offers, my
-            CMS ensures everything&apos;s live and relevant.
-          </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/couponluxury/cms-1.png`,
-              `${BASE_PATH}/couponluxury/cms-2.png`,
-            ]}
-          />
-          <p className="font-mono mb-2 mt-5">
-            Plus, I&apos;ve sprinkled in some extra magic like personalized
-            deal recommendations, user-friendly search features, and a sleek,
-            responsive design that works like a charm on any device.
-          </p>
-          <p className="font-mono mb-2">
-            CouponLuxury isn&apos;t just a website; it&apos;s your personal deal-hunting
-            assistant, ensuring you never miss out on a bargain!
-          </p>
-          {/* <TypographyP className="my-4 mt-8">
-          <strong>Misc:</strong>
-          Hosted not one, not two, but THREE coding contests (Codemacha) during
-          college. Safe to say, Coding Ducks passed the vibe check.
-        </TypographyP>
-        <TypographyP className="my-4 mt-8">
-          <strong>Target Audience:</strong>
-          For all the novice coders out there ready to make their mark.
-        </TypographyP> */}
-        </div>
-      );
-    },
-  },
-  {
-    id: "the-booking-desk",
-    category: "Travel",
-    title: "The Booking Desk",
-    src: "/assets/projects-screenshots/the-booking-desk/landing.png",
-    screenshots: ["1.png"],
-    live: "https://thebookingdesk.com/",
-    skills: {
-      frontend: [
-        PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.next,
-        PROJECT_SKILLS.aceternity,
-        PROJECT_SKILLS.tailwind,
-      ],
-      backend: [PROJECT_SKILLS.sanity],
-    },
+    live: "https://quanta8-applicant-tracking-system.vercel.app/",
     get content() {
       return (
         <div>
           <TypographyP className="font-mono ">
-            The Booking Desk is your ultimate travel consultation hub, designed
-            to turn your wanderlust dreams into reality. With a focus on smooth
-            and visually captivating animations, navigating the site feels like
-            a breeze—it&apos;s almost as if the destinations are calling you.
+            An intelligent Applicant Tracking System designed for Quanta8's sister company, 
+            automating the entire recruitment workflow with AI-powered resume parsing, 
+            OCR document processing, and facial recognition capabilities.
           </TypographyP>
-          <ProjectsLinks live={this.live} repo={this.github} />
+          <ProjectsLinks live={this.live} />
+          
+          <TypographyH3 className="my-4 mt-8">AI Resume Parsing</TypographyH3>
+          <p className="font-mono mb-2">
+            Integrated Anthropic's Claude API to automatically extract and structure 
+            candidate information from resumes. The system intelligently parses names, 
+            contact details, work experience, education, and skills with high accuracy.
+          </p>
+          
+          <TypographyH3 className="my-4 mt-8">OCR Document Processing</TypographyH3>
+          <p className="font-mono mb-2">
+            Implemented docTR (Document Text Recognition) for optical character recognition, 
+            enabling the system to extract text from scanned documents and images. This 
+            ensures no candidate information is lost, regardless of document format.
+          </p>
+          
+          <TypographyH3 className="my-4 mt-8">Facial Recognition</TypographyH3>
+          <p className="font-mono mb-2">
+            Leveraged OpenCV and face_recognition libraries to verify candidate identities 
+            during the interview process. The system can match candidate photos with 
+            uploaded identification documents, enhancing security and authenticity.
+          </p>
+          
+          <TypographyH3 className="my-4 mt-8">Backend Infrastructure</TypographyH3>
+          <p className="font-mono mb-2">
+            Built a robust backend with FastAPI and PostgreSQL, implementing secure RESTful 
+            API endpoints and efficient data pipelines. The system handles concurrent 
+            requests and processes large volumes of application data seamlessly.
+          </p>
+          
           <p className="font-mono mb-2 mt-8">
-            A sleek, modern interface greets you, featuring the latest travel
-            tips, deals, and must-visit spots around the globe.
-          </p>
-          <SlideShow images={[`${BASE_PATH}/the-booking-desk/landing.png`]} />
-          <TypographyH3 className="my-4 mt-8">Blogs</TypographyH3>
-          <p className="font-mono mb-2">
-            Dive into the curated articles written by travel experts. Whether
-            you&apos;re looking for hidden gems or travel hacks, our blog section has
-            you covered.
-          </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/the-booking-desk/blogs.png`,
-              `${BASE_PATH}/the-booking-desk/blog.png`,
-            ]}
-          />
-          <TypographyH3 className="my-4 mt-8">Sanity CMS</TypographyH3>
-
-          <p className="font-mono mb-2">
-            Keeping everything fresh and up-to-date, I&apos;ve integrated Sanity CMS
-            to manage all the content with ease, ensuring you always get the
-            latest and greatest information.
-          </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/the-booking-desk/cms-1.png`,
-              `${BASE_PATH}/the-booking-desk/cms-2.png`,
-            ]}
-          />
-          <p className="font-mono mb-2 my-8">
-            With a stunning 100% score on Lighthouse, The Booking Desk isn&apos;t
-            just beautiful—it&apos;s built to perform. Whether you&apos;re planning your
-            next adventure or just daydreaming, our site delivers a top-notch
-            experience that&apos;s both informative and enjoyable.
+            This internal system significantly reduced manual screening time and improved 
+            the overall quality of candidate evaluation, making the recruitment process 
+            more efficient and data-driven.
           </p>
         </div>
       );
     },
   },
   {
-    id: "portfolio",
-    category: "Portfolio",
-    title: "My Portfolio",
-    src: "/assets/projects-screenshots/portfolio/landing.png",
-    screenshots: ["1.png"],
-    live: "http://nareshkhatri.vercel.app",
-    github:"https://github.com/Naresh-Khatri/Portfolio",
+    id: "nametag-detection",
+    category: "Computer Vision | Object Detection",
+    title: "Name Tag Detection System (YOLOv8)",
+    src: "/assets/projects-screenshots/nametag-detection/demo.png",
+    screenshots: ["demo.png"],
+    skills: {
+      frontend: [],
+      backend: [
+        PROJECT_SKILLS.python,
+        PROJECT_SKILLS.yolov8,
+        PROJECT_SKILLS.roboflow,
+        PROJECT_SKILLS.opencv,
+      ],
+    },
+    live: "#",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono ">
+            A computer vision system developed for FootfallCam that detects name tags in 
+            video footage using a fine-tuned YOLOv8 model. The project involved custom 
+            dataset creation, annotation, model training, and real-time video inference.
+          </TypographyP>
+          
+          <TypographyH3 className="my-4 mt-8">Dataset Preparation</TypographyH3>
+          <p className="font-mono mb-2">
+            Extracted 268 frames from the provided video sample and manually annotated 
+            44 images in Roboflow. The dataset was split into 70% training, 20% testing, 
+            and 10% validation sets to ensure robust model performance.
+          </p>
+          
+          <TypographyH3 className="my-4 mt-8">Model Fine-Tuning</TypographyH3>
+          <p className="font-mono mb-2">
+            Fine-tuned YOLOv8 on the custom dataset, optimizing for name tag detection in 
+            various lighting conditions and angles. The training process involved careful 
+            hyperparameter tuning to balance precision and recall.
+          </p>
+          
+          <TypographyH3 className="my-4 mt-8">Performance Metrics</TypographyH3>
+          <ul className="list-disc ml-6 font-mono mb-4">
+            <li><strong>mAP@0.5:</strong> 90.7% - High accuracy in object detection</li>
+            <li><strong>Precision:</strong> 86.4% - Minimal false positives</li>
+            <li><strong>Recall:</strong> 87.5% - Excellent detection rate</li>
+          </ul>
+          
+          <TypographyH3 className="my-4 mt-8">Video Inference</TypographyH3>
+          <p className="font-mono mb-2">
+            Re-processed the original video with the trained model, generating an annotated 
+            output with bounding boxes around detected name tags. The system runs in 
+            real-time, making it suitable for live video streams.
+          </p>
+          
+          <p className="font-mono mb-2 mt-8">
+            This project demonstrates practical application of deep learning in retail 
+            analytics and visitor management systems.
+          </p>
+        </div>
+      );
+    },
+  },
+  {
+    id: "math-chatbot",
+    category: "AI Education Tool",
+    title: "Mathematics Chatbot (FYP)",
+    src: "/assets/projects-screenshots/math-chatbot/chat.png",
+    screenshots: ["chat.png"],
+    skills: {
+      frontend: [],
+      backend: [
+        PROJECT_SKILLS.python,
+        PROJECT_SKILLS.llama,
+        PROJECT_SKILLS.jupyter,
+      ],
+    },
+    live: "#",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono ">
+            An AI-powered educational chatbot designed as my Final Year Project to assist 
+            Malaysian secondary school students (Form 1-3) with mathematics problems. 
+            The system uses fine-tuned open-source LLMs to provide conversational 
+            problem-solving guidance based on the KSSM syllabus.
+          </TypographyP>
+          
+          <TypographyH3 className="my-4 mt-8">Model Selection & Training</TypographyH3>
+          <p className="font-mono mb-2">
+            Experimented with multiple LLMs including Llama 3.1-8B, TinyLlama, and Mistral 7B. 
+            Used the unsloth library and FastLanguageModel for efficient 4-bit quantization 
+            training on limited hardware. The training process involved careful 
+            dataset curation and hyperparameter tuning to balance model size and performance.
+          </p>
+          
+          <TypographyH3 className="my-4 mt-8">Technical Challenges</TypographyH3>
+          <p className="font-mono mb-2">
+            Faced significant hardware constraints while fine-tuning large language models. 
+            Dealt with both underfitting (insufficient training) and overfitting (memorization) 
+            issues. This hands-on experience deepened my understanding of tokenization, 
+            context windows (max_seq_length: 2048), parameter optimization, and model 
+            quantization techniques.
+          </p>
+          
+          <TypographyH3 className="my-4 mt-8">Development Environment</TypographyH3>
+          <p className="font-mono mb-2">
+            Built and trained the model on Ubuntu using Jupyter Notebook. The development 
+            involved extensive configuration of CUDA drivers, PyTorch, and transformer 
+            libraries to optimize GPU utilization for training.
+          </p>
+          
+          <TypographyH3 className="my-4 mt-8">Curriculum Coverage</TypographyH3>
+          <p className="font-mono mb-2">
+            Trained on Malaysia's official KSSM mathematics syllabus for Form 1-3, covering 
+            topics from basic arithmetic to algebraic equations. The chatbot provides 
+            step-by-step explanations tailored to the Malaysian education system.
+          </p>
+          
+          <p className="font-mono mb-2 mt-8">
+            While not perfect, this project was presentable and demonstrated the practical 
+            application of LLMs in education. It laid the foundation for my interest in 
+            AI/ML engineering and working with large language models.
+          </p>
+        </div>
+      );
+    },
+  },
+  {
+    id: "attendance-system",
+    category: "Location-Based System",
+    title: "Geolocation Attendance System (BITC)",
+    src: "/assets/projects-screenshots/attendance-system/login.png",
+    screenshots: ["login.png"],
     skills: {
       frontend: [
-        PROJECT_SKILLS.ts,
-        PROJECT_SKILLS.next,
-        PROJECT_SKILLS.shadcn,
-        PROJECT_SKILLS.aceternity,
-        PROJECT_SKILLS.framerMotion,
+        PROJECT_SKILLS.react,
+        PROJECT_SKILLS.js,
         PROJECT_SKILLS.tailwind,
-        PROJECT_SKILLS.spline,
+      ],
+      backend: [
+        PROJECT_SKILLS.python,
+        PROJECT_SKILLS.flask,
+        PROJECT_SKILLS.geopy,
+        PROJECT_SKILLS.render,
+      ],
+    },
+    live: "https://www.attendance.borneoinspire.com/",
+    get content() {
+      return (
+        <div>
+          <TypographyP className="font-mono ">
+            A location-based attendance tracking system built for Borneoinspire Training 
+            & Consultancy. My first hands-on Python project, focusing on backend development 
+            with Flask while collaborating with a frontend developer to create a complete 
+            attendance management solution.
+          </TypographyP>
+          <ProjectsLinks live={this.live} />
+          
+          <TypographyH3 className="my-4 mt-8">Geolocation Verification</TypographyH3>
+          <p className="font-mono mb-2">
+            Implemented geopy for precise location tracking and verification. The system 
+            uses IP-based geolocation to determine user position and enforces a 100-meter 
+            radius restriction around the office. Employees can only check in when physically 
+            present at the workplace, preventing remote clock-ins.
+          </p>
+          
+          <TypographyH3 className="my-4 mt-8">Real-Time Check-In</TypographyH3>
+          <p className="font-mono mb-2">
+            The check-in button becomes active only when the user is within the designated 
+            geofence. The system captures timestamp, location coordinates, and user details 
+            for each attendance record, ensuring accurate tracking and accountability.
+          </p>
+          
+          <TypographyH3 className="my-4 mt-8">Backend Development</TypographyH3>
+          <p className="font-mono mb-2">
+            My primary responsibility was building the Flask backend, which handles 
+            authentication, location verification, attendance logging, and report generation. 
+            This was my introduction to Python web frameworks and RESTful API design.
+          </p>
+          
+          <TypographyH3 className="my-4 mt-8">Team Collaboration</TypographyH3>
+          <p className="font-mono mb-2">
+            Worked alongside my colleague Aiman, who developed the frontend using React. 
+            This collaboration taught me the importance of API documentation, version 
+            control, and effective communication in a team environment.
+          </p>
+          
+          <TypographyH3 className="my-4 mt-8">Deployment</TypographyH3>
+          <p className="font-mono mb-2">
+            Deployed on Render, ensuring reliable uptime and scalability. This was my 
+            first experience with cloud deployment, environment variables, and production 
+            server management.
+          </p>
+          
+          <p className="font-mono mb-2 mt-8">
+            This project marked the beginning of my backend development journey and 
+            solidified my passion for building practical, real-world solutions.
+          </p>
+        </div>
+      );
+    },
+  },
+  {
+    id: "dynasty-restaurant",
+    category: "Responsive Web Design",
+    title: "Dynasty Chinese Restaurant Landing Page",
+    src: "/assets/projects-screenshots/dynasty-restaurant/landing.png",
+    screenshots: ["landing.png"],
+    skills: {
+      frontend: [
+        PROJECT_SKILLS.react,
+        PROJECT_SKILLS.next,
+        PROJECT_SKILLS.tailwind,
       ],
       backend: [],
     },
+    live: "https://www.dynastychineserestaurant.com.my/",
     get content() {
       return (
         <div>
           <TypographyP className="font-mono ">
-            Welcome to my digital playground, where creativity meets code in the
-            dopest way possible.
+            A modern, responsive landing page for Dynasty Chinese Restaurant, built during 
+            my internship at Zenara Jaya. This project pushed me outside my comfort zone 
+            as a backend developer, challenging me to create an elegant, mobile-friendly 
+            design that showcases the restaurant's ambiance and menu.
           </TypographyP>
-          <ProjectsLinks live={this.live} repo={this.github} />
-          <TypographyH3 className="my-4 mt-8">
-            Beautiful 3D Objects{" "}
-          </TypographyH3>
+          <ProjectsLinks live={this.live} />
+          
+          <TypographyH3 className="my-4 mt-8">Design Challenge</TypographyH3>
           <p className="font-mono mb-2">
-            Did you see that 3D keyboard modal? Yeah! I made that. That
-            interactive keyboard is being rendered in 3D on a webpage 🤯, and
-            pressing each keycap reveals a skill in a goofy way. It&apos;s like
-            typing, but make it art.
+            As someone who specializes in backend development, designing an aesthetically 
+            pleasing website was initially intimidating. However, I embraced the challenge 
+            with a "you'll never know if you never try" attitude. The result is a clean, 
+            modern interface that effectively represents the restaurant's brand.
           </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/portfolio/landing.png`,
-              `${BASE_PATH}/portfolio/skills.png`,
-            ]}
-          />
-          <TypographyH3 className="my-4 ">Space Theme</TypographyH3>
+          
+          <TypographyH3 className="my-4 mt-8">Responsive Design</TypographyH3>
           <p className="font-mono mb-2">
-            Dark background + floating particles = out-of-this-world cool.
+            The toughest challenge was making the site fully responsive. I learned about 
+            responsive design principles, mobile-first approach, and CSS breakpoints while 
+            working on this project. The site now looks great on devices of all sizes, 
+            from smartphones to desktop monitors.
           </p>
-          <SlideShow images={[`${BASE_PATH}/portfolio/navbar.png`]} />
-          <TypographyH3 className="my-4 mt-8">Projects</TypographyH3>
-
+          
+          <TypographyH3 className="my-4 mt-8">Tech Stack</TypographyH3>
           <p className="font-mono mb-2">
-            My top personal and freelance projects — no filler, all killer.
+            Built with Next.js and Tailwind CSS for optimal performance and maintainability. 
+            The static site generation ensures fast load times, which is crucial for 
+            user experience and SEO.
           </p>
-          <SlideShow
-            images={[
-              `${BASE_PATH}/portfolio/projects.png`,
-              `${BASE_PATH}/portfolio/project.png`,
-            ]}
-          />
-          <p className="font-mono mb-2 mt-8 text-center">
-            This site&apos;s not just a portfolio — it&apos;s a whole vibe.
+          
+          <TypographyH3 className="my-4 mt-8">Key Features</TypographyH3>
+          <ul className="list-disc ml-6 font-mono mb-4">
+            <li>Responsive navigation menu</li>
+            <li>Image gallery showcasing restaurant ambiance</li>
+            <li>Mobile-optimized menu display</li>
+            <li>Contact information and location map</li>
+            <li>Social media integration</li>
+          </ul>
+          
+          <p className="font-mono mb-2 mt-8">
+            This project taught me that stepping outside your specialty area can lead to 
+            valuable growth. While backend remains my strength, I now have a better 
+            appreciation for frontend development and can build complete full-stack solutions 
+            when needed.
           </p>
-        </div>
-      );
-    },
-  },
-  {
-    id: "ghostchat",
-    category: "Anonymous chat",
-    title: "GhostChat",
-    src: "/assets/projects-screenshots/ghostchat/1.png",
-    screenshots: ["1.png", "2.png", "3.png", "4.png"],
-    live: "https://ghostchat.vercel.app",
-    github:"https://github.com/Naresh-Khatri/GhostChat",
-    skills: {
-      frontend: [PROJECT_SKILLS.js, PROJECT_SKILLS.next, PROJECT_SKILLS.chakra],
-      backend: [PROJECT_SKILLS.supabase],
-    },
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono ">
-            Ghostchat is your go-to spot for sending anonymous messages without
-            leaving a trace. Powered by Supabase, it&apos;s all about keeping things
-            low-key and secure. Whether you&apos;re sharing secrets, giving feedback,
-            or just having some fun, Ghostchat ensures your identity stays
-            hidden, while your voice is heard. Say what you want, without the
-            worry.
-          </TypographyP>
-          <ProjectsLinks live={this.live} repo={this.github} />
-          <SlideShow
-            images={[
-              `${BASE_PATH}/ghostchat/1.png`,
-              `${BASE_PATH}/ghostchat/2.png`,
-              `${BASE_PATH}/ghostchat/3.png`,
-              `${BASE_PATH}/ghostchat/4.png`,
-            ]}
-          />
-        </div>
-      );
-    },
-  },
-  {
-    id: "jra",
-    category: "Result analyzer",
-    title: "JNTUA Results Analyzer",
-    src: "/assets/projects-screenshots/jra/1.png",
-    screenshots: ["1.png"],
-    live: "https://naresh-khatri.github.io/JNTUA-result-analyser-spa/#/",
-    skills: {
-      frontend: [PROJECT_SKILLS.js, PROJECT_SKILLS.vue],
-      backend: [
-        PROJECT_SKILLS.node,
-        PROJECT_SKILLS.mongo,
-        PROJECT_SKILLS.express,
-        PROJECT_SKILLS.docker,
-      ],
-    },
-    get content() {
-      return (
-        <div>
-          <TypographyP className="font-mono ">
-            JNTUA Results Analyzer was a revolutionary tool designed to simplify
-            and enhance the experience of accessing academic results. It served
-            as a powerful proxy between the JNTUA university results website and
-            its users, offering a range of features that made result analysis
-            faster and more efficient. Here&apos;s what made it stand out:
-          </TypographyP>
-          <ProjectsLinks live={this.live} repo={this.github} />
-          <SlideShow images={[`${BASE_PATH}/jra/1.png`]} />
-          <TypographyH3 className="my-4 mt-8">
-            Effortless Results Retrieval
-          </TypographyH3>
-          {/* Effortless Results Retrieval: */}
-          <ul className="list-disc ml-6">
-            <li className="font-mono">
-              Search all your results using a single roll number, eliminating
-              the tedious task of sifting through thousands of rows on the
-              official site.
-            </li>
-          </ul>
-          <TypographyH3 className="my-4 mt-8">Class-Wise Results:</TypographyH3>
-          <ul className="list-disc ml-6">
-            <li className="font-mono">
-              class-wise results effortlessly by entering a roll number range.
-              No more manual searches or filtering.
-            </li>
-          </ul>
-          <TypographyH3 className="my-4 mt-8">Faculty Features:</TypographyH3>
-          <ul className="list-disc ml-6">
-            <li className="font-mono">
-              Faculty members could download batch results in Excel format,
-              making administrative tasks a breeze.
-            </li>
-          </ul>
-          <TypographyH3 className="my-4 mt-8">
-            Enhanced Data Insights:
-          </TypographyH3>
-          <ul className="list-disc ml-6">
-            <li className="font-mono">
-              Each result came with additional features including:
-              <ul className="list-disc font-mono ml-6">
-                <li>
-                  <strong>CGPA Calculations: </strong>Easily track your
-                  cumulative grade point average.
-                </li>
-                <li>
-                  <strong>Charts:</strong> Visualize your academic performance
-                  with comprehensive charts.
-                </li>
-                <li>
-                  <strong>Future Projections:</strong> Get insights into
-                  potential future outcomes based on current performance.
-                </li>
-                <li>
-                  <strong> Backlog Counts: </strong>Keep track of your backlog
-                  subjects at a glance.
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <TypographyH3 className="my-4 mt-8">Performance:</TypographyH3>
-          <ul className="list-disc ml-6">
-            <li className="font-mono">
-              The application was significantly faster and more efficient than
-              the official site, providing a smoother user experience.
-            </li>
-          </ul>
-          <TypographyH3 className="my-4 mt-8">Downfall:</TypographyH3>
-          <ul className="list-disc ml-6">
-            <li className="font-mono">
-              Unfortunately, as of May 2022, the tool stopped working due to the
-              introduction of CAPTCHA on the official JNTUA results site, which
-              disrupted the seamless functionality of the app. JNTUA Results
-              Analyzer transformed the way students and faculty interacted with
-              academic results, making it a must-have tool until its unexpected
-              shutdown.
-            </li>
-          </ul>
         </div>
       );
     },

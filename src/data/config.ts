@@ -1,45 +1,44 @@
 const config = {
-  title: "Naresh Khatri | Full-Stack Developer",
+  title: "Potateo's Portfolio",
   description: {
-    long: "Explore the portfolio of Naresh, a full-stack developer and creative technologist specializing in interactive web experiences, 3D animations, and innovative projects. Discover my latest work, including Coding Ducks, The Booking Desk, Ghostchat, and more. Let's build something amazing together!",
+    long: "Explore the portfolio of Brian Teo, a Junior AI/ML Engineer and Backend Developer specializing in intelligent systems, ML pipelines, and scalable backend architecture. Discover my work including ATS systems with Claude API, OCR-powered document processing, custom geolocation tracking, and AI-powered educational tools. Let's build something innovative together!",
     short:
-      "Discover the portfolio of Naresh, a full-stack developer creating interactive web experiences and innovative projects.",
+      "Discover the portfolio of Brian Teo, an AI/ML Engineer building intelligent systems and scalable backend solutions.",
   },
   keywords: [
-    "Naresh",
-    "portfolio",
-    "full-stack developer",
-    "creative technologist",
-    "web development",
-    "3D animations",
-    "interactive websites",
-    "Coding Ducks",
-    "The Booking Desk",
-    "Ghostchat",
-    "web design",
-    "GSAP",
-    "React",
-    "Next.js",
-    "Spline",
-    "Framer Motion",
+    "Brian Teo",
+    "Teo Kah Hien",
+    "AI/ML Engineer",
+    "Backend Developer",
+    "Machine Learning",
+    "Python",
+    "FastAPI",
+    "PostgreSQL",
+    "Anthropic Claude API",
+    "OCR",
+    "Computer Vision",
+    "ATS System",
+    "Docker",
+    "PyTorch",
+    "Cognitive Science",
+    "Miri Sarawak",
+    "Malaysia",
   ],
-  author: "Naresh Khatri",
-  email: "naresh.khatri2345@gmail.com",
-  site: "https://nareshkhatri.site",
+  author: "Teo Kah Hien",
+  email: "brian04teo@gmail.com",
+  site: "https://brianteo.vercel.app", // Update this when you have your domain
 
-  // for github stars button
-  githubUsername: "naresh-khatri",
-  githubRepo: "3d-portfolio",
+  // for github stars button (removed - not needed)
+  githubUsername: "kimimura",
+  githubRepo: "portfolio",
 
   get ogImg() {
     return this.site + "/assets/seo/og-image.png";
   },
   social: {
-    twitter: "https://x.com/nothotchaddi",
-    linkedin: "https://www.linkedin.com/in/naresh-khatri/",
-    instagram: "https://www.instagram.com/hotchaddi",
-    facebook: "https://www.facebook.com/HotChaddi/",
-    github: "https://github.com/Naresh-Khatri",
+    instagram: "https://www.instagram.com/brn_tkhh/",
+    github: "https://github.com/kimimura",
+    linkedin: "https://www.linkedin.com/in/kah-hien-teo-6a4b9a23b/",
   },
 };
 export { config };
