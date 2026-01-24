@@ -28,29 +28,33 @@ const SlideShow = ({ images }: { images: string[] }) => {
         rewind: true,
         padding: {left:'3rem',right:'3rem'},
         gap: "1rem",
+        wheel: false, // Disable wheel navigation to allow parent scroll
+        drag: true, // Keep drag enabled for manual navigation
       }}
       hasTrack={false}
     >
       <SplideTrack>
         {images.map((image, idx) => (
-          <SplideSlide key={idx} className="flex items-center">
+          <SplideSlide key={idx} className="flex items-center justify-center">
             <Dialog>
               <DialogTrigger
-                className="relative"
+                className="relative block w-full"
                 onMouseEnter={() => setHovering(true)}
                 onMouseLeave={() => setHovering(false)}
               >
                 <Image
                   src={image}
                   alt="screenshot"
-                  width={1000}
-                  height={1000}
-                  className="w-full rounded-lg h-auto"
+                  width={2000}
+                  height={2000}
+                  quality={100}
+                  className="w-full rounded-lg object-contain"
+                  style={{ maxHeight: "400px", height: "auto" }}
                 />
                 <AnimatePresence>
                   {hovering && (
                     <motion.div
-                      className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black/50 text-white backdrop-blur-[1px]"
+                      className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-black/50 text-white backdrop-blur-[1px] rounded-lg"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
@@ -70,8 +74,9 @@ const SlideShow = ({ images }: { images: string[] }) => {
                 <Image
                   src={image}
                   alt="screenshot"
-                  width={1000}
-                  height={1000}
+                  width={4000}
+                  height={4000}
+                  quality={100}
                   className="w-full"
                   style={{ objectFit: "contain", width: "100vw" }}
                 />

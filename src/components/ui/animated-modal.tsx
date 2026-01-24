@@ -10,6 +10,7 @@ import React, {
   useState,
 } from "react";
 import { ScrollArea } from "./scroll-area";
+import { useLenis } from "@/lib/lenis";
 
 interface ModalContextType {
   open: boolean;
@@ -68,25 +69,36 @@ export const ModalBody = ({
   children: ReactNode;
   className?: string;
 }) => {
-  const { open } = useModal();
+  const { open, setOpen } = useModal();
+  const lenis = useLenis();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      document.addEventListener("keydown", (e) => {
+      const handleEscape = (e: KeyboardEvent) => {
         if (e.key === "Escape") setOpen(false);
-      });
+      };
+      document.addEventListener("keydown", handleEscape);
+      return () => document.removeEventListener("keydown", handleEscape);
     }
-  }, []);
+  }, [setOpen]);
+
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
+      // Stop Lenis smooth scroll when modal is open
+      if (lenis) {
+        lenis.stop();
+      }
     } else {
       document.body.style.overflow = "auto";
+      // Restart Lenis smooth scroll when modal closes
+      if (lenis) {
+        lenis.start();
+      }
     }
-  }, [open]);
+  }, [open, lenis]);
 
   const modalRef = useRef(null);
-  const { setOpen } = useModal();
   useOutsideClick(modalRef, () => setOpen(false));
 
   return (
@@ -104,14 +116,14 @@ export const ModalBody = ({
             opacity: 0,
             backdropFilter: "blur(0px)",
           }}
-          className="modall fixed [perspective:800px] [transform-style:preserve-3d] inset-0 h-full w-full  flex items-center justify-center z-50"
+          className="modall fixed [perspective:800px] [transform-style:preserve-3d] inset-0 h-full w-full flex items-center justify-center z-[9999]"
         >
           <Overlay />
 
           <motion.div
             ref={modalRef}
             className={cn(
-              "min-h-[50%] max-h-[90%] md:max-w-[40%] bg-white dark:bg-neutral-950 border border-transparent dark:border-neutral-800 md:rounded-2xl relative z-50 flex flex-col flex-1 overflow-hidden",
+              "min-h-[50%] max-h-[90%] md:max-w-[40%] bg-white dark:bg-neutral-950 border border-transparent dark:border-neutral-800 md:rounded-2xl relative z-[10000] flex flex-col flex-1 overflow-hidden",
               className
             )}
             initial={{
@@ -138,7 +150,7 @@ export const ModalBody = ({
             }}
           >
             <CloseIcon />
-            <ScrollArea className="h-[80dvh] w-full rounded-md border">
+            <ScrollArea className="h-[80dvh] w-full rounded-md border" data-lenis-prevent>
               {children}
             </ScrollArea>
           </motion.div>
@@ -156,7 +168,7 @@ export const ModalContent = ({
   className?: string;
 }) => {
   return (
-    <div className={cn("flex flex-col flex-1 p-3 md:p-10", className)}>
+    <div className={cn("flex flex-col p-3 md:p-10 pb-20", className)}>
       {children}
     </div>
   );
@@ -183,6 +195,21 @@ export const ModalFooter = ({
 
 const Overlay = ({ className }: { className?: string }) => {
   const { setOpen } = useModal();
+  
+  const handleOverlayClick = (e: React.MouseEvent) => {
+    // Don't close if clicking on scrollbar
+    const target = e.target as HTMLElement;
+    if (
+      target.closest('[data-radix-scroll-area-scrollbar]') ||
+      target.hasAttribute('data-radix-scroll-area-scrollbar') ||
+      target.closest('[data-radix-scroll-area-thumb]') ||
+      target.hasAttribute('data-radix-scroll-area-thumb')
+    ) {
+      return;
+    }
+    setOpen(false);
+  };
+  
   return (
     <motion.div
       initial={{
@@ -196,8 +223,9 @@ const Overlay = ({ className }: { className?: string }) => {
         opacity: 0,
         backdropFilter: "blur(0px)",
       }}
-      className={`modal-overlay fixed inset-0 h-full w-full bg-black bg-opacity-50 z-50 ${className}`}
-      onClick={() => setOpen(false)}
+      className={`modal-overlay fixed inset-0 h-full w-full bg-black bg-opacity-50 z-[9999] ${className}`}
+      onClick={handleOverlayClick}
+      style={{ pointerEvents: 'auto' }}
     ></motion.div>
   );
 };
@@ -207,7 +235,7 @@ const CloseIcon = () => {
   return (
     <button
       onClick={() => setOpen(false)}
-      className="absolute top-4 right-4 group z-[9999]"
+      className="absolute top-4 right-4 group z-[10001]"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -236,19 +264,27 @@ export const useOutsideClick = (
   callback: Function
 ) => {
   useEffect(() => {
-    const listener = (
-      event: any
-      //  React.MouseEvent<HTMLDivElement> | React.TouchEvent<HTMLDivElement>
-    ) => {
+    const listener = (event: any) => {
       // DO NOTHING if the element being clicked is the target element or their children
+      if (!ref.current || ref.current.contains(event.target)) {
+        return;
+      }
+      
+      // Check if click is on scrollbar elements - don't close modal
+      const target = event.target as HTMLElement;
       if (
-        !ref.current ||
-        ref.current.contains(event.target) ||
-        !event.target.classList.contains("no-click-outside")
+        target.closest('[data-radix-scroll-area-scrollbar]') ||
+        target.hasAttribute('data-radix-scroll-area-scrollbar') ||
+        target.closest('[data-radix-scroll-area-thumb]') ||
+        target.hasAttribute('data-radix-scroll-area-thumb')
       ) {
         return;
       }
-      callback(event);
+      
+      // Check if the click is on the overlay (outside the modal content)
+      if (event.target.classList?.contains("modal-overlay")) {
+        callback(event);
+      }
     };
 
     document.addEventListener("mousedown", listener);

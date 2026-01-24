@@ -19,11 +19,13 @@ export async function POST(req: Request) {
       data: zodData,
       error: zodError,
     } = Email.safeParse(body);
-    if (!zodSuccess)
-      return Response.json({ error: zodError?.message }, { status: 400 });
+    if (!zodSuccess) {
+      const errorMessage = zodError?.errors?.[0]?.message || zodError?.message || "Validation failed";
+      return Response.json({ error: errorMessage }, { status: 400 });
+    }
 
     const { data: resendData, error: resendError } = await resend.emails.send({
-      from: "Porfolio <onboarding@resend.dev>",
+      from: "Portfolio <onboarding@resend.dev>",
       to: [config.email],
       subject: "Contact me from portfolio",
       react: EmailTemplate({

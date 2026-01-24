@@ -35,7 +35,6 @@ const EasterEggs = () => {
           get() {
             console.log(
               "%cNice! You're curious like me!\n" +
-                "I build backend systems by day, hunt for Easter eggs by night. 🌙\n" +
                 "Let's see if you can find the next one... 👀",
 
               "color: #FF4500; font-size: 18px; font-weight: bold; background-color: black; padding: 10px; border-radius: 10px; margin-top:10px"
@@ -44,7 +43,7 @@ const EasterEggs = () => {
             const timer = setTimeout(() => {
               console.log(
                 "%cAlright, alright... I'll give you a hint 🤫\n" +
-                  "I may run on caffeine, but something else runs across my screen...\n" +
+                  "I run on caffeine, but something else runs across my screen...\n" +
                   "Hit 'b' on viewport to see what I mean! 🐱💨",
                 "color: #FF69B4; font-size: 16px; font-weight: bold; background-color: black; padding: 10px; border-radius: 10px;"
               );

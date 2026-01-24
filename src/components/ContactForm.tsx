@@ -33,8 +33,11 @@ const ContactForm = () => {
           message,
         }),
       });
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || "Something went wrong!");
+      }
       const data = await res.json();
-      if (data.error) throw new Error(data.error);
       toast({
         title: "Thank you!",
         description: "I'll get back to you as soon as possible.",
@@ -50,9 +53,10 @@ const ContactForm = () => {
         clearTimeout(timer);
       }, 1000);
     } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : "Something went wrong! Please check the fields.";
       toast({
         title: "Error",
-        description: "Something went wrong! Please check the fields.",
+        description: errorMessage,
         className: cn(
           "top-0 w-full flex justify-center fixed md:max-w-7xl md:top-4 md:right-4"
         ),
@@ -90,14 +94,14 @@ const ContactForm = () => {
       <div className="grid w-full gap-1.5 mb-4">
         <Label htmlFor="content">Your Message</Label>
         <Textarea
-          placeholder="Tell me about about your project,"
+          placeholder="Speak carefully, child. Thy words now carry weight."
           id="content"
           required
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
         <p className="text-sm text-muted-foreground">
-          I&apos;ll never share your data with anyone else. Pinky promise!
+          I shall proclaim thy words throughout the kingdom...in jest, of course.
         </p>
       </div>
       <Button

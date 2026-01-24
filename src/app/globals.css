@@ -111,3 +111,62 @@ html {
     pointer-events: auto;
   }
 }
+
+/* Ensure Splide carousel doesn't block scroll in modals */
+[data-lenis-prevent] .splide {
+  touch-action: pan-y;
+}
+
+[data-lenis-prevent] .splide__track {
+  touch-action: pan-y;
+}
+
+/* Ensure ScrollArea can scroll all content */
+[data-radix-scroll-area-viewport] {
+  display: block !important;
+}
+
+[data-radix-scroll-area-viewport] > div {
+  display: block !important;
+}
+
+/* Make scrollbar always visible */
+[data-radix-scroll-area-scrollbar] {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: flex !important;
+  pointer-events: auto !important;
+  z-index: 10003 !important;
+}
+
+[data-radix-scroll-area-scrollbar][data-state="hidden"] {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: flex !important;
+  pointer-events: auto !important;
+}
+
+[data-radix-scroll-area-thumb] {
+  pointer-events: auto !important;
+}
+
+/* Profile picture flip card effect */
+.perspective-1000 {
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}

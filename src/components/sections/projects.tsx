@@ -5,11 +5,9 @@ import {
   Modal,
   ModalBody,
   ModalContent,
-  ModalFooter,
   ModalTrigger,
 } from "../ui/animated-modal";
 import { FloatingDock } from "../ui/floating-dock";
-import Link from "next/link";
 
 import SmoothScroll from "../smooth-scroll";
 import projects, { Project } from "@/data/projects";
@@ -40,12 +38,19 @@ const Modall = ({ project }: { project: Project }) => {
             style={{ aspectRatio: "3/2" }}
           >
             <Image
-              className="absolute w-full h-full top-0 left-0 hover:scale-[1.05] transition-all"
+              className="absolute w-full h-full top-0 left-0 hover:scale-[1.05] transition-all object-cover"
               src={project.src}
               alt={project.title}
-              width={300}
-              height={300}
+              width={2400}
+              height={1600}
+              quality={100}
             />
+            {project.ongoing && (
+              <div className="absolute top-3 right-3 flex items-center gap-2 bg-green-500 text-white text-xs font-semibold px-3 py-1 rounded-full z-10">
+                <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                Ongoing
+              </div>
+            )}
             <div className="absolute w-full h-1/2 bottom-0 left-0 bg-gradient-to-t from-black via-black/85 to-transparent pointer-events-none">
               <div className="flex flex-col h-full items-start justify-end p-6">
                 <div className="text-lg text-left">{project.title}</div>
@@ -62,16 +67,6 @@ const Modall = ({ project }: { project: Project }) => {
               <ProjectContents project={project} />
             </ModalContent>
           </SmoothScroll>
-          <ModalFooter className="gap-4">
-            <button className="px-2 py-1 bg-gray-200 text-black dark:bg-black dark:border-black dark:text-white border border-gray-300 rounded-md text-sm w-28">
-              Cancel
-            </button>
-            <Link href={project.live} target="_blank">
-              <button className="bg-black text-white dark:bg-white dark:text-black text-sm px-2 py-1 rounded-md border border-black w-28">
-                Visit
-              </button>
-            </Link>
-          </ModalFooter>
         </ModalBody>
       </Modal>
     </div>

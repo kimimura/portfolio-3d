@@ -24,7 +24,6 @@ import {
   SiPython,
   SiReactquery,
   SiRender,
-  SiRoboflow,
   SiSanity,
   SiShadcnui,
   SiSocketdotio,
@@ -187,6 +186,14 @@ const PROJECT_SKILLS = {
     fg: "white",
     icon: <SiTypescript />,
   },
+  vite: {
+    title: "Vite",
+    bg: "black",
+    fg: "white",
+    icon: (
+      <span className="font-bold text-purple-500">V</span>
+    ),
+  },
   vue: {
     title: "Vue.js",
     bg: "black",
@@ -263,7 +270,7 @@ const PROJECT_SKILLS = {
     title: "Roboflow",
     bg: "black",
     fg: "white",
-    icon: <SiRoboflow />,
+    icon: <span className="font-bold text-purple-600">RF</span>,
   },
   jupyter: {
     title: "Jupyter",
@@ -306,14 +313,22 @@ export type Project = {
   content: React.ReactNode | any;
   github?: string;
   live: string;
+  ongoing?: boolean;
 };
 const projects: Project[] = [
   {
     id: "quanta8-ats",
-    category: "AI-Powered HR System",
-    title: "Applicant Tracking System (Quanta8)",
-    src: "/assets/projects-screenshots/quanta8-ats/landing.png",
-    screenshots: ["landing.png"],
+    category: "AI-Powered HRM System",
+    title: "Applicant Tracking System",
+    src: "/assets/projects-screenshots/quanta8-ats/3.png",
+    screenshots: [
+      "1.png",
+      "2.png",
+      "3.png",
+      "4.png",
+      "5.png",
+      "6.png",
+    ],
     skills: {
       frontend: [
         PROJECT_SKILLS.react,
@@ -331,48 +346,70 @@ const projects: Project[] = [
       ],
     },
     live: "https://quanta8-applicant-tracking-system.vercel.app/",
+    ongoing: true,
     get content() {
       return (
         <div>
           <TypographyP className="font-mono ">
-            An intelligent Applicant Tracking System designed for Quanta8's sister company, 
-            automating the entire recruitment workflow with AI-powered resume parsing, 
-            OCR document processing, and facial recognition capabilities.
+            My biggest challenge yet. An AI-powered Applicant Tracking System (ATS) 
+            for one of our sister companies, Quanta8, built solo and currently in active 
+            development. This full-stack HRM system automates recruitment workflows with 
+            AI resume parsing, OCR document processing, and facial recognition.
           </TypographyP>
           <ProjectsLinks live={this.live} />
           
-          <TypographyH3 className="my-4 mt-8">AI Resume Parsing</TypographyH3>
+          <SlideShow
+            images={[
+              `${BASE_PATH}/quanta8-ats/1.png`,
+              `${BASE_PATH}/quanta8-ats/2.png`,
+              `${BASE_PATH}/quanta8-ats/3.png`,
+              `${BASE_PATH}/quanta8-ats/4.png`,
+              `${BASE_PATH}/quanta8-ats/5.png`,
+              `${BASE_PATH}/quanta8-ats/6.png`,
+            ]}
+          />
+          
+          <TypographyH3 className="my-4 mt-8">Project Roadmap</TypographyH3>
+          <ul className="list-disc ml-6 font-mono mb-4">
+            <li><strong>Phase 0:</strong> Minimum Viable Product (MVP) ✅</li>
+            <li><strong>Phase 1:</strong> Internal use for Quanta8 (Current) ⚠️</li>
+            <li><strong>Phase 2:</strong> Public launch (similar to Jobstreet, Indeed) 🎯</li>
+          </ul>
+          
+          <TypographyH3 className="my-4 mt-8">Core Features</TypographyH3>
           <p className="font-mono mb-2">
-            Integrated Anthropic's Claude API to automatically extract and structure 
-            candidate information from resumes. The system intelligently parses names, 
-            contact details, work experience, education, and skills with high accuracy.
+            <strong>AI Resume Parsing:</strong> Integrated Anthropic's Claude API to automatically 
+            extract and structure candidate information from their resume, including names, contact 
+            details, experience, education, and skills.
           </p>
           
-          <TypographyH3 className="my-4 mt-8">OCR Document Processing</TypographyH3>
-          <p className="font-mono mb-2">
-            Implemented docTR (Document Text Recognition) for optical character recognition, 
-            enabling the system to extract text from scanned documents and images. This 
-            ensures no candidate information is lost, regardless of document format.
+          <p className="font-mono mb-2 mt-4">
+            <strong>OCR Document Processing:</strong> Implemented docTR for optical character 
+            recognition, extracting text from scanned documents and images regardless of format.
           </p>
           
-          <TypographyH3 className="my-4 mt-8">Facial Recognition</TypographyH3>
-          <p className="font-mono mb-2">
-            Leveraged OpenCV and face_recognition libraries to verify candidate identities 
-            during the interview process. The system can match candidate photos with 
-            uploaded identification documents, enhancing security and authenticity.
+          <p className="font-mono mb-2 mt-4">
+            <strong>Facial Recognition:</strong> Leveraged OpenCV and face_recognition libraries 
+            to verify candidate identities during interviews, matching photos with uploaded IDs.
           </p>
           
-          <TypographyH3 className="my-4 mt-8">Backend Infrastructure</TypographyH3>
+          <p className="font-mono mb-2 mt-4">
+            <strong>Full-Stack Architecture:</strong> Built with Next.js frontend, FastAPI backend, 
+            PostgreSQL (Supabase) database, and Vercel/DigitalOcean deployment. Secure RESTful APIs, efficient data 
+            pipelines, and scalable infrastructure.
+          </p>
+          
+          <TypographyH3 className="my-4 mt-8">Current Status</TypographyH3>
           <p className="font-mono mb-2">
-            Built a robust backend with FastAPI and PostgreSQL, implementing secure RESTful 
-            API endpoints and efficient data pipelines. The system handles concurrent 
-            requests and processes large volumes of application data seamlessly.
+            Currently in Phase 1, deployed for internal use for Quanta8. The system is actively 
+            being refined based on user feedback. Working solo on this entire 
+            HRM system has been my most ambitious project to date, pushing my skills across 
+            frontend, backend, AI integration, and system architecture.
           </p>
           
           <p className="font-mono mb-2 mt-8">
-            This internal system significantly reduced manual screening time and improved 
-            the overall quality of candidate evaluation, making the recruitment process 
-            more efficient and data-driven.
+            This project represents the culmination of everything I've learned, from backend 
+            development to AI/ML integration. It's currently still ongoing so stay tuned. 😊
           </p>
         </div>
       );
@@ -381,9 +418,9 @@ const projects: Project[] = [
   {
     id: "nametag-detection",
     category: "Computer Vision | Object Detection",
-    title: "Name Tag Detection System (YOLOv8)",
-    src: "/assets/projects-screenshots/nametag-detection/demo.png",
-    screenshots: ["demo.png"],
+    title: "Name Tag Detection (YOLOv8)",
+    src: "/assets/projects-screenshots/nametag-detection/val_batch0_pred.jpg",
+    screenshots: [],
     skills: {
       frontend: [],
       backend: [
@@ -397,24 +434,89 @@ const projects: Project[] = [
     get content() {
       return (
         <div>
-          <TypographyP className="font-mono ">
-            A computer vision system developed for FootfallCam that detects name tags in 
-            video footage using a fine-tuned YOLOv8 model. The project involved custom 
-            dataset creation, annotation, model training, and real-time video inference.
+          <TypographyP className="font-mono mb-4">
+            A system that detects name tags using a fine-tuned YOLOv8 model. 
+            This project demonstrates my approach to solving real-world object detection 
+            problems through systematic dataset creation, annotation, model training, and 
+            video inference.
           </TypographyP>
           
-          <TypographyH3 className="my-4 mt-8">Dataset Preparation</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Project Objective</TypographyH3>
           <p className="font-mono mb-2">
-            Extracted 268 frames from the provided video sample and manually annotated 
-            44 images in Roboflow. The dataset was split into 70% training, 20% testing, 
-            and 10% validation sets to ensure robust model performance.
+            Given a video sample, the goal was to build a system capable of accurately 
+            detecting and localizing name tags across various frames, lighting conditions, 
+            and angles. The challenge was to create a robust model with limited annotated data.
           </p>
           
-          <TypographyH3 className="my-4 mt-8">Model Fine-Tuning</TypographyH3>
-          <p className="font-mono mb-2">
-            Fine-tuned YOLOv8 on the custom dataset, optimizing for name tag detection in 
-            various lighting conditions and angles. The training process involved careful 
-            hyperparameter tuning to balance precision and recall.
+          <TypographyH3 className="my-4 mt-8">My Approach</TypographyH3>
+          
+          <p className="font-mono mb-2 mt-4">
+            <strong>1. Data Extraction & Analysis</strong>
+          </p>
+          <p className="font-mono mb-2 ml-4">
+            Extracted 268 frames from the provided video sample. Analyzed the footage to 
+            identify diverse scenarios (varying distances, angles, lighting) to ensure the 
+            dataset would generalize well.
+          </p>
+          
+          <p className="font-mono mb-2 mt-4">
+            <strong>2. Dataset Annotation</strong>
+          </p>
+          <p className="font-mono mb-2 ml-4">
+            Manually annotated 44 images in Roboflow, drawing bounding boxes around name tags. 
+            Selected frames strategically to capture different perspectives and conditions. 
+            Split the dataset into 70% training, 20% testing, and 10% validation to prevent 
+            overfitting and ensure reliable evaluation.
+          </p>
+          
+          <p className="font-mono mb-2 mt-4">
+            <strong>3. Model Selection & Training</strong>
+          </p>
+          <p className="font-mono mb-2 ml-4">
+            Chose YOLOv8 for its speed-accuracy trade-off, making it suitable for real-time 
+            detection. Fine-tuned the model on the custom dataset, adjusting hyperparameters 
+            to balance precision and recall. Monitored training metrics to avoid overfitting 
+            despite the small dataset size.
+          </p>
+          
+          <TypographyH3 className="my-4 mt-8">Training Batches</TypographyH3>
+          <p className="font-mono mb-4">
+            Sample training batches showing annotated bounding boxes on name tags across various 
+            scenarios and viewing angles.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <Image 
+              src="/assets/projects-screenshots/nametag-detection/train_batch0.jpg" 
+              alt="Training Batch 1" 
+              width={2000} 
+              height={2000} 
+              quality={100}
+              className="rounded-lg w-full"
+            />
+            <Image 
+              src="/assets/projects-screenshots/nametag-detection/train_batch1.jpg" 
+              alt="Training Batch 2" 
+              width={2000} 
+              height={2000} 
+              quality={100}
+              className="rounded-lg w-full"
+            />
+            <Image 
+              src="/assets/projects-screenshots/nametag-detection/train_batch2.jpg" 
+              alt="Training Batch 3" 
+              width={2000} 
+              height={2000} 
+              quality={100}
+              className="rounded-lg w-full"
+            />
+          </div>
+          
+          <p className="font-mono mb-2 mt-4">
+            <strong>4. Evaluation & Optimization</strong>
+          </p>
+          <p className="font-mono mb-2 ml-4">
+            Evaluated the trained model on the test set, achieving strong metrics that 
+            demonstrate effective generalization from limited training data.
           </p>
           
           <TypographyH3 className="my-4 mt-8">Performance Metrics</TypographyH3>
@@ -424,16 +526,73 @@ const projects: Project[] = [
             <li><strong>Recall:</strong> 87.5% - Excellent detection rate</li>
           </ul>
           
-          <TypographyH3 className="my-4 mt-8">Video Inference</TypographyH3>
-          <p className="font-mono mb-2">
+          <div className="my-6">
+            <Image 
+              src="/assets/projects-screenshots/nametag-detection/results.png" 
+              alt="Training Results Graph" 
+              width={3000} 
+              height={2000} 
+              quality={100}
+              className="rounded-lg w-full"
+            />
+          </div>
+          
+          <p className="font-mono mb-2 mt-4">
+            Training convergence metrics demonstrating stable learning across all evaluation 
+            metrics. The graphs show consistent improvement in precision, recall, and mAP scores, 
+            confirming the model's ability to generalize from limited training data.
+          </p>
+          
+          <TypographyH3 className="my-4 mt-8">Validation Results</TypographyH3>
+          <p className="font-mono mb-4">
+            Comparison between ground truth labels (left) and model predictions (right) on 
+            validation set, demonstrating high accuracy in detecting name tags.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div>
+              <p className="text-sm font-mono mb-2 text-center">Ground Truth Labels</p>
+              <Image 
+                src="/assets/projects-screenshots/nametag-detection/val_batch0_labels.jpg" 
+                alt="Validation Ground Truth" 
+                width={2000} 
+                height={2000} 
+                quality={100}
+                className="rounded-lg w-full"
+              />
+            </div>
+            <div>
+              <p className="text-sm font-mono mb-2 text-center">Model Predictions</p>
+              <Image 
+                src="/assets/projects-screenshots/nametag-detection/val_batch0_pred.jpg" 
+                alt="Validation Predictions" 
+                width={2000} 
+                height={2000} 
+                quality={100}
+                className="rounded-lg w-full"
+              />
+            </div>
+          </div>
+          
+          <p className="font-mono mb-2 mt-4">
+            <strong>5. Video Inference & Output</strong>
+          </p>
+          <p className="font-mono mb-2 ml-4">
             Re-processed the original video with the trained model, generating an annotated 
-            output with bounding boxes around detected name tags. The system runs in 
-            real-time, making it suitable for live video streams.
+            output with bounding boxes and confidence scores. The system processes frames 
+            efficiently, making it suitable for real-time applications.
+          </p>
+          
+          <TypographyH3 className="my-4 mt-8">Technical Stack</TypographyH3>
+          <p className="font-mono mb-2">
+            Python, YOLOv8 (Ultralytics), Roboflow (annotation & dataset management), 
+            OpenCV (video processing). The entire pipeline, from data preparation to 
+            inference, was designed to be reproducible and scalable.
           </p>
           
           <p className="font-mono mb-2 mt-8">
-            This project demonstrates practical application of deep learning in retail 
-            analytics and visitor management systems.
+            This project showcases my ability to approach computer vision problems 
+            methodically, work with limited datasets, and deliver high-performing models 
+            for practical applications like retail analytics and visitor management systems.
           </p>
         </div>
       );
@@ -441,10 +600,18 @@ const projects: Project[] = [
   },
   {
     id: "math-chatbot",
-    category: "AI Education Tool",
-    title: "Mathematics Chatbot (FYP)",
-    src: "/assets/projects-screenshots/math-chatbot/chat.png",
-    screenshots: ["chat.png"],
+    category: "AI Education Tool | Fine-Tuning LLMs",
+    title: "Cikgu Aiman - Mathematics Chatbot (FYP)",
+    src: "/assets/projects-screenshots/math-chatbot/output1.png",
+    screenshots: [
+      "output1.png",
+      "output2.png",
+      "output3.png",
+      "jupyter1.png",
+      "jupyter2.png",
+      "jupyter3.png",
+      "jupyter4.png",
+    ],
     skills: {
       frontend: [],
       backend: [
@@ -458,47 +625,173 @@ const projects: Project[] = [
       return (
         <div>
           <TypographyP className="font-mono ">
-            An AI-powered educational chatbot designed as my Final Year Project to assist 
-            Malaysian secondary school students (Form 1-3) with mathematics problems. 
-            The system uses fine-tuned open-source LLMs to provide conversational 
-            problem-solving guidance based on the KSSM syllabus.
+            Cikgu Aiman, an AI-powered educational chatbot developed as my Final Year Project 
+            at UNIMAS. Designed to assist Malaysian secondary school students (Form 1-3) with 
+            mathematics problems using open-source LLMs and prompt engineering. This project 
+            represents my entry into AI/ML engineering, built entirely offline using free, 
+            local models.
           </TypographyP>
           
-          <TypographyH3 className="my-4 mt-8">Model Selection & Training</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Chatbot Results</TypographyH3>
+          <p className="font-mono mb-4">
+            The chatbot successfully solved KSSM-aligned mathematics problems with step-by-step 
+            explanations. Below is an example showing how it calculates compound interest, 
+            demonstrating its ability to break down complex problems into understandable steps 
+            for students.
+          </p>
+          <div className="mb-8">
+            <Image 
+              src="/assets/projects-screenshots/math-chatbot/output1.png" 
+              alt="Compound Interest Problem Solution" 
+              width={1200} 
+              height={900} 
+              quality={100}
+              className="rounded-lg w-full object-contain"
+              style={{ maxHeight: "500px" }}
+            />
+          </div>
+          
+          <TypographyH3 className="my-4 mt-8">The Rocky Start</TypographyH3>
           <p className="font-mono mb-2">
-            Experimented with multiple LLMs including Llama 3.1-8B, TinyLlama, and Mistral 7B. 
-            Used the unsloth library and FastLanguageModel for efficient 4-bit quantization 
-            training on limited hardware. The training process involved careful 
-            dataset curation and hyperparameter tuning to balance model size and performance.
+            My FYP journey didn't start smoothly. I initially failed a project related to Augmented 
+            Reality, which forced me to switch projects. I switched from Dr. Rehman's supervision 
+            to Dr. Hardyman's supervision, who specializes in computational linguistics and artificial
+            intelligence, topics I knew little to nothing about at the time.
           </p>
           
-          <TypographyH3 className="my-4 mt-8">Technical Challenges</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Compressed Timeline</TypographyH3>
           <p className="font-mono mb-2">
-            Faced significant hardware constraints while fine-tuning large language models. 
-            Dealt with both underfitting (insufficient training) and overfitting (memorization) 
-            issues. This hands-on experience deepened my understanding of tokenization, 
-            context windows (max_seq_length: 2048), parameter optimization, and model 
-            quantization techniques.
+            To make matters worse, I had to fit both FYP1 and FYP2 into the same semester. 
+            At the beginning, I was doubtful. Could I really pull this off? But with Dr. 
+            Hardyman's guidance and countless meetings, I started to see a path forward.
           </p>
           
-          <TypographyH3 className="my-4 mt-8">Development Environment</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Learning from Zero</TypographyH3>
           <p className="font-mono mb-2">
-            Built and trained the model on Ubuntu using Jupyter Notebook. The development 
-            involved extensive configuration of CUDA drivers, PyTorch, and transformer 
-            libraries to optimize GPU utilization for training.
+            Embarrassingly, I didn't know how to use VS Code at the time. So I used 
+            Jupyter Notebook for everything. Late nights watching YouTube tutorials, 
+            experimenting with code, breaking things, fixing them, which became my routine. 
+            Dr. Hardyman taught me about tokenization, context windows, and how language 
+            models actually work under the hood. I wasn't efficient yet, so I manually logged 
+            everything in Notepad and Word.
           </p>
+          
+          <TypographyH3 className="my-4 mt-8">Technical Setup</TypographyH3>
+          <p className="font-mono mb-2">
+            I set up a local AI environment using Ubuntu 24.04 LTS through Windows Subsystem 
+            for Linux (WSL), alongside Miniconda to manage Python environments. The Ollama 
+            framework allowed me to run LLMs locally without needing internet or expensive 
+            APIs. I installed Open WebUI to create a modern chat interface similar to ChatGPT, 
+            but fully offline.
+          </p>
+          
+          <p className="font-mono mb-2 ml-4 mt-4">
+            <strong>Key tools:</strong>
+          </p>
+          <ul className="list-disc ml-10 font-mono mb-4">
+            <li>Ollama: Local LLM runtime</li>
+            <li>Open WebUI: Chat interface</li>
+            <li>Docker: Container management</li>
+            <li>Unsloth: Lightweight fine-tuning library for LLaMA models</li>
+            <li>Jupyter Notebook: Training scripts and experiment logs</li>
+          </ul>
+          
+          <TypographyH3 className="my-4 mt-8">The Hardware Reality Check</TypographyH3>
+          <p className="font-mono mb-2">
+            I experimented with multiple models: TinyLlama, Mistral 7B, and Llama 3.1-8B. 
+            That's when I hit a wall: Hardware constraints. My laptop only had 4GB of VRAM, 
+            which is nowhere near enough for fine-tuning large language models. I quickly 
+            learned how expensive AI really is, not just in time but in computational resources.
+          </p>
+          
+          <TypographyH3 className="my-4 mt-8">Fine-Tuning with Limited Resources</TypographyH3>
+          <p className="font-mono mb-2">
+            I attempted fine-tuning models using Unsloth and 4-bit quantization to work around 
+            hardware limitations. This involved experimenting with hyperparameters, dealing with 
+            underfitting and overfitting issues, and understanding the delicate balance between 
+            model size and performance. The model would either not learn enough or memorize the 
+            training data. Each attempt taught me more about tokenization, parameter optimization, 
+            and model architecture.
+          </p>
+          
+          <p className="font-mono mb-2">
+            I also explored prompt engineering techniques with Llama 3.1-8B, crafting structured 
+            prompts to guide the model's responses. Combined with the fine-tuning experiments, 
+            the chatbot could solve compound interest, algebra, and other KSSM-aligned problems 
+            with step-by-step explanations.
+          </p>
+          
+          <TypographyH3 className="my-4 mt-8">Training Process</TypographyH3>
+          <p className="font-mono mb-4">
+            Jupyter Notebook logs showing the model training process, configurations, and 
+            experimentation with different approaches.
+          </p>
+          <div className="space-y-4 mb-8">
+            <Image 
+              src="/assets/projects-screenshots/math-chatbot/jupyter1.png" 
+              alt="Training Setup and Configuration" 
+              width={2000} 
+              height={1500} 
+              quality={100}
+              className="rounded-lg w-full object-contain"
+              style={{ maxHeight: "800px" }}
+            />
+            <Image 
+              src="/assets/projects-screenshots/math-chatbot/jupyter2.png" 
+              alt="Model Fine-Tuning Process" 
+              width={2000} 
+              height={1500} 
+              quality={100}
+              className="rounded-lg w-full object-contain"
+              style={{ maxHeight: "800px" }}
+            />
+            <Image 
+              src="/assets/projects-screenshots/math-chatbot/jupyter3.png" 
+              alt="Training Experiments and Logs" 
+              width={2000} 
+              height={1500} 
+              quality={100}
+              className="rounded-lg w-full object-contain"
+              style={{ maxHeight: "800px" }}
+            />
+            <Image 
+              src="/assets/projects-screenshots/math-chatbot/jupyter4.png" 
+              alt="Model Evaluation Results" 
+              width={2000} 
+              height={1500} 
+              quality={100}
+              className="rounded-lg w-full object-contain"
+              style={{ maxHeight: "800px" }}
+            />
+          </div>
           
           <TypographyH3 className="my-4 mt-8">Curriculum Coverage</TypographyH3>
           <p className="font-mono mb-2">
-            Trained on Malaysia's official KSSM mathematics syllabus for Form 1-3, covering 
-            topics from basic arithmetic to algebraic equations. The chatbot provides 
-            step-by-step explanations tailored to the Malaysian education system.
+            The chatbot was trained on Malaysia's official KSSM mathematics syllabus for 
+            Form 1-3, covering topics from basic arithmetic to algebraic equations. The goal 
+            wasn't perfection, but to build something functional and presentable. And I did.
+          </p>
+          
+          <ul className="list-disc ml-6 font-mono mb-4">
+            <li>Form 1 Mathematics: Number Systems, Basic Operations...</li>
+            <li>Form 2 Mathematics: Algebra, Geometry, Probability...</li>
+            <li>Form 3 Mathematics: Advanced Algebra, Statistics, Trigonometry...</li>
+          </ul>
+          
+          <TypographyH3 className="my-4 mt-8">Development Environment</TypographyH3>
+          <p className="font-mono mb-2">
+            Built on Ubuntu 24.04 LTS (via WSL) using Jupyter Notebook. Configured CUDA 
+            drivers, PyTorch, and transformer libraries through trial and error. Created a 
+            Conda environment named "Cikgu Aiman" running Python 3.10. The entire system ran 
+            offline using free, open-source models, which has no API costs and no internet required.
           </p>
           
           <p className="font-mono mb-2 mt-8">
-            While not perfect, this project was presentable and demonstrated the practical 
-            application of LLMs in education. It laid the foundation for my interest in 
-            AI/ML engineering and working with large language models.
+            Looking back, this FYP was a turning point. It wasn't perfect, but I pulled it off. 
+            I learned the basics and fundamentals of fine-tuning AI models, understood how 
+            expensive and resource-intensive AI can be, adapted when things didn't work, and 
+            most importantly, discovered an ignition point for AI/ML engineering. This project laid 
+            the foundation for everything I've done in AI since.
           </p>
         </div>
       );
@@ -507,15 +800,11 @@ const projects: Project[] = [
   {
     id: "attendance-system",
     category: "Location-Based System",
-    title: "Geolocation Attendance System (BITC)",
-    src: "/assets/projects-screenshots/attendance-system/login.png",
-    screenshots: ["login.png"],
+    title: "Geolocation Attendance System",
+    src: "/assets/projects-screenshots/attendance-system/login-page.png",
+    screenshots: ["login-page.png", "main-page.png", "attendance-record.png"],
     skills: {
-      frontend: [
-        PROJECT_SKILLS.react,
-        PROJECT_SKILLS.js,
-        PROJECT_SKILLS.tailwind,
-      ],
+      frontend: [],
       backend: [
         PROJECT_SKILLS.python,
         PROJECT_SKILLS.flask,
@@ -535,45 +824,59 @@ const projects: Project[] = [
           </TypographyP>
           <ProjectsLinks live={this.live} />
           
-          <TypographyH3 className="my-4 mt-8">Geolocation Verification</TypographyH3>
+          <SlideShow
+            images={[
+              `${BASE_PATH}/attendance-system/login-page.png`,
+              `${BASE_PATH}/attendance-system/main-page.png`,
+              `${BASE_PATH}/attendance-system/attendance-record.png`,
+            ]}
+          />
+          
+          <TypographyH3 className="my-4 mt-8">How It Started</TypographyH3>
           <p className="font-mono mb-2">
-            Implemented geopy for precise location tracking and verification. The system 
-            uses IP-based geolocation to determine user position and enforces a 100-meter 
-            radius restriction around the office. Employees can only check in when physically 
-            present at the workplace, preventing remote clock-ins.
+            One day, my boss came to me and said, "Hey, I want you to create an attendance 
+            system, work with Aiman." Just like that. No detailed spec, just a clear goal. This 
+            was different from the usual tasks I had when I was still with Borneoinspire, 
+            before getting transferred to Zenara. It felt like a test, could I actually build 
+            something real?
           </p>
           
-          <TypographyH3 className="my-4 mt-8">Real-Time Check-In</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Backend Capabilities Put to Test</TypographyH3>
           <p className="font-mono mb-2">
-            The check-in button becomes active only when the user is within the designated 
-            geofence. The system captures timestamp, location coordinates, and user details 
-            for each attendance record, ensuring accurate tracking and accountability.
+            This project tested my backend skills in ways I hadn't experienced before. I was 
+            responsible for the entire backend infrastructure, location verification, attendance 
+            logging, and API design, while Aiman handled the frontend development. At the time, 
+            I was still new to Python, so this became my first hands-on experience with Flask 
+            and building RESTful APIs.
           </p>
           
-          <TypographyH3 className="my-4 mt-8">Backend Development</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Geolocation: The Core Feature</TypographyH3>
           <p className="font-mono mb-2">
-            My primary responsibility was building the Flask backend, which handles 
-            authentication, location verification, attendance logging, and report generation. 
-            This was my introduction to Python web frameworks and RESTful API design.
+            The main challenge was implementing geolocation-based check-ins. Using geopy, I set 
+            up a system that verifies user location based on IP address and enforces a 100-meter 
+            radius around the office. If you're outside that range, the "Check In" button simply 
+            won't activate. No remote clock-ins allowed.
           </p>
           
-          <TypographyH3 className="my-4 mt-8">Team Collaboration</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Real-Time Verification</TypographyH3>
           <p className="font-mono mb-2">
-            Worked alongside my colleague Aiman, who developed the frontend using React. 
-            This collaboration taught me the importance of API documentation, version 
-            control, and effective communication in a team environment.
+            The system captures timestamp, location coordinates, and user details for each 
+            check-in. It's simple, functional, and does exactly what it needs to do: tracking 
+            attendance with location verification in real time.
           </p>
           
-          <TypographyH3 className="my-4 mt-8">Deployment</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Deployment & Results</TypographyH3>
           <p className="font-mono mb-2">
-            Deployed on Render, ensuring reliable uptime and scalability. This was my 
-            first experience with cloud deployment, environment variables, and production 
-            server management.
+            Deployed on Render, the system went live and has been running smoothly. 
+            Sure, there are a few bugs here and there, but overall, it works perfectly fine. 
+            This was my first time deploying a Python backend to production, and it taught me 
+            a lot about environment variables, server management, and API endpoint design.
           </p>
           
           <p className="font-mono mb-2 mt-8">
-            This project marked the beginning of my backend development journey and 
-            solidified my passion for building practical, real-world solutions.
+            Looking back, this project was a booster shot. It solidified my confidence in 
+            backend development and proved that I could build real solutions for actual 
+            business needs.
           </p>
         </div>
       );
@@ -581,15 +884,15 @@ const projects: Project[] = [
   },
   {
     id: "dynasty-restaurant",
-    category: "Responsive Web Design",
-    title: "Dynasty Chinese Restaurant Landing Page",
-    src: "/assets/projects-screenshots/dynasty-restaurant/landing.png",
-    screenshots: ["landing.png"],
+    category: "Landing Page | Responsive Web Design",
+    title: "Dynasty Chinese Restaurant",
+    src: "/assets/projects-screenshots/dynasty-restaurant/1.png",
+    screenshots: ["1.png", "2.png", "3.png", "4.png", "5.png"],
     skills: {
       frontend: [
         PROJECT_SKILLS.react,
-        PROJECT_SKILLS.next,
-        PROJECT_SKILLS.tailwind,
+        PROJECT_SKILLS.ts,
+        PROJECT_SKILLS.vite,
       ],
       backend: [],
     },
@@ -598,50 +901,66 @@ const projects: Project[] = [
       return (
         <div>
           <TypographyP className="font-mono ">
-            A modern, responsive landing page for Dynasty Chinese Restaurant, built during 
-            my internship at Zenara Jaya. This project pushed me outside my comfort zone 
-            as a backend developer, challenging me to create an elegant, mobile-friendly 
-            design that showcases the restaurant's ambiance and menu.
+            A modern, responsive landing page for Miri's Dynasty Chinese Restaurant. This project pushed me 
+            outside of my comfort zone as a backend developer, challenging me to create an elegant, 
+            mobile-friendly design that showcases the restaurant's culinary offerings.
           </TypographyP>
           <ProjectsLinks live={this.live} />
           
-          <TypographyH3 className="my-4 mt-8">Design Challenge</TypographyH3>
+          <SlideShow
+            images={[
+              `${BASE_PATH}/dynasty-restaurant/1.png`,
+              `${BASE_PATH}/dynasty-restaurant/2.png`,
+              `${BASE_PATH}/dynasty-restaurant/3.png`,
+              `${BASE_PATH}/dynasty-restaurant/4.png`,
+              `${BASE_PATH}/dynasty-restaurant/5.png`,
+            ]}
+          />
+          
+          <TypographyH3 className="my-4 mt-8">The Beginning</TypographyH3>
           <p className="font-mono mb-2">
-            As someone who specializes in backend development, designing an aesthetically 
-            pleasing website was initially intimidating. However, I embraced the challenge 
-            with a "you'll never know if you never try" attitude. The result is a clean, 
-            modern interface that effectively represents the restaurant's brand.
+            This was my first time designing something hands-on. I was incredibly grateful when 
+            my boss trusted me with this project, especially since I wasn't that proficient with 
+            coding in general at the time. Dynasty Chinese Restaurant had never had a website or 
+            landing page before, so the pressure was real.
           </p>
           
-          <TypographyH3 className="my-4 mt-8">Responsive Design</TypographyH3>
+          <TypographyH3 className="my-4 mt-8">Finding My Way</TypographyH3>
           <p className="font-mono mb-2">
-            The toughest challenge was making the site fully responsive. I learned about 
-            responsive design principles, mobile-first approach, and CSS breakpoints while 
-            working on this project. The site now looks great on devices of all sizes, 
-            from smartphones to desktop monitors.
+            At first, I tried various tools like Replit, Lovable, and Emergent, hoping one would 
+            magically solve my design inexperience. But nothing felt right. Eventually, I took a 
+            different approach, spending hours browsing Chinese and Mexican restaurant websites from 
+            around the world, gathering inspiration and studying what worked. That's when everything 
+            started to click.
+          </p>
+          
+          <TypographyH3 className="my-4 mt-8">The Hardest Part: Responsiveness</TypographyH3>
+          <p className="font-mono mb-2">
+            Without a doubt, making the site fully responsive was the toughest challenge. Learning 
+            about responsive design principles, mobile-first approach, and CSS breakpoints while 
+            actively building was like learning to swim by jumping into the deep end. But the 
+            struggle was worth it, the site now looks okay-ish on devices of all sizes.
           </p>
           
           <TypographyH3 className="my-4 mt-8">Tech Stack</TypographyH3>
           <p className="font-mono mb-2">
-            Built with Next.js and Tailwind CSS for optimal performance and maintainability. 
-            The static site generation ensures fast load times, which is crucial for 
-            user experience and SEO.
+            Built with React, TypeScript, and Vite. The tech stack is mostly TypeScript with some 
+            HTML and CSS sprinkled in. It's fast, maintainable, and gets the job done.
           </p>
           
           <TypographyH3 className="my-4 mt-8">Key Features</TypographyH3>
           <ul className="list-disc ml-6 font-mono mb-4">
             <li>Responsive navigation menu</li>
-            <li>Image gallery showcasing restaurant ambiance</li>
+            <li>Image gallery showcasing signature dishes from Dynasty</li>
             <li>Mobile-optimized menu display</li>
             <li>Contact information and location map</li>
-            <li>Social media integration</li>
+            <li>WhatsApp integration</li>
           </ul>
           
           <p className="font-mono mb-2 mt-8">
-            This project taught me that stepping outside your specialty area can lead to 
-            valuable growth. While backend remains my strength, I now have a better 
-            appreciation for frontend development and can build complete full-stack solutions 
-            when needed.
+            This project taught me that sometimes you just have to dive in and figure things out 
+            as you go. While backend development remains my strength, I now have a much better 
+            appreciation for the design and frontend side of things.
           </p>
         </div>
       );
