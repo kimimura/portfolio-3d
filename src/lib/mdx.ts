@@ -12,6 +12,9 @@ type Metadata = {
 };
 
 function getMDXFiles(dir: string) {
+  if (!fs.existsSync(dir)) {
+    return [];
+  }
   return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
 }
 
@@ -35,11 +38,18 @@ function getMDXData(dir: string) {
 }
 
 export function getBlogPosts() {
-  return getMDXData(path.join(process.cwd(), "src/content/blogs"));
+  const blogsDir = path.join(process.cwd(), "src/content/blogs");
+  if (!fs.existsSync(blogsDir)) {
+    return [];
+  }
+  return getMDXData(blogsDir);
 }
 
 export function getBlogPost(slug: string) {
   const filePath = path.join(process.cwd(), "src/content/blogs", `${slug}.mdx`);
+  if (!fs.existsSync(filePath)) {
+    throw new Error(`Blog post not found: ${slug}`);
+  }
   const { data, content } = readMDXFile(filePath);
   return {
     metadata: data as Metadata,
