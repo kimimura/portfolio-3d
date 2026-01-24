@@ -25,7 +25,7 @@ export async function POST(req: Request) {
     }
 
     const { data: resendData, error: resendError } = await resend.emails.send({
-      from: "Portfolio <onboarding@resend.dev>",
+      from: "Portfolio <noreply@brianteo.site>",
       to: [config.email],
       subject: "Contact me from portfolio",
       react: EmailTemplate({
