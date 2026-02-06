@@ -328,6 +328,8 @@ const projects: Project[] = [
       "4.png",
       "5.png",
       "6.png",
+      "7.png",
+      "8.png",
     ],
     skills: {
       frontend: [
@@ -366,6 +368,8 @@ const projects: Project[] = [
               `${BASE_PATH}/quanta8-ats/4.png`,
               `${BASE_PATH}/quanta8-ats/5.png`,
               `${BASE_PATH}/quanta8-ats/6.png`,
+              `${BASE_PATH}/quanta8-ats/7.png`,
+              `${BASE_PATH}/quanta8-ats/8.png`,
             ]}
           />
           
