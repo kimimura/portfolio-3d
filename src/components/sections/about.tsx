@@ -319,7 +319,7 @@ const AboutSection = () => {
                 </ul>
                 <div className="flex flex-row gap-3 mt-6">
                   <Link
-                    href="https://drive.google.com/file/d/1jLyfIpkbyIMKdQph1CraJAQB7FcTrvE-/view?usp=drive_link"
+                    href="https://drive.google.com/file/d/1MOCU22tRknUoVlkV2nXuJslVpdVfg4TD/view?usp=drive_link"
                     target="_blank"
                     className="flex-1"
                   >
